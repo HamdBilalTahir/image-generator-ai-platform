@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
+function generateRandomId() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
+import { assemblePrompt } from '../utils/promptTemplate';
+import { generateImage } from '../utils/apiUtils';
+import { generateAndSetProjectId } from '../utils/projectIdUtils';
+
 const GuidedForm: React.FC = () => {
+  const [projectId, setProjectId] = useState('');
   const [brandPalette, setBrandPalette] = useState('');
   const [productType, setProductType] = useState('');
   const [backgroundStyle, setBackgroundStyle] = useState('');
@@ -12,6 +20,14 @@ const GuidedForm: React.FC = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
+    const storedProjectId = localStorage.getItem("projectId");
+    if (storedProjectId) {
+      setProjectId(storedProjectId);
+    } else {
+      const newProjectId = generateAndSetProjectId();
+      setProjectId(newProjectId);
+    }
+
     setIsFormValid(
       brandPalette !== '' &&
       productType !== '' &&
@@ -21,18 +37,25 @@ const GuidedForm: React.FC = () => {
     );
   }, [brandPalette, productType, backgroundStyle, slogan, logoUrl]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Logic to handle form submission and image generation
-    console.log({
+    const formData = {
       brandPalette,
       productType,
       backgroundStyle,
-      slogan,
-      description,
+      sloganText: slogan,
+      ambassadorDescriptions: description,
       logoUrl,
       packagingMockupUrl
-    });
+    };
+    const prompt = assemblePrompt(formData);
+
+    try {
+      const data = await generateImage(projectId, prompt, formData);
+      console.log('Image generated successfully:', data);
+    } catch (error) {
+      console.error('Error generating image:', error);
+    }
   };
 
   return (
@@ -93,7 +116,7 @@ const GuidedForm: React.FC = () => {
   </div>
 </div>
 
-<button type="submit" disabled={!isFormValid || imageSize === ''} className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md shadow-sm disabled:opacity-50">
+<button type="submit" disabled={!isFormValid || imageSize === ''} className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md shadow-sm disabled:opacity-50 disabled:bg-gray-400">
   Generate Image
 </button>
     </form>
