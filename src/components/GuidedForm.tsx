@@ -36,26 +36,26 @@ const GuidedForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded-lg p-6 space-y-4 text-white">
+    <form onSubmit={handleSubmit} className="bg-gray-800 shadow-md rounded-lg p-6 space-y-4 text-white w-full max-w-2xl mx-auto my-8">
       <div className="space-y-4">
   <div>
     <label className="block text-sm font-medium">Brand Palette:</label>
-    <input type="text" value={brandPalette} onChange={(e) => setBrandPalette(e.target.value)} required className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50" />
+    <textarea value={brandPalette} onChange={(e) => setBrandPalette(e.target.value)} required placeholder="e.g., Purple: #800080 background, Yellow: #FFFF00 hero text" className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50 p-2 resize-y" rows={2} />
   </div>
 
   <div>
     <label className="block text-sm font-medium">Product Type:</label>
-    <input type="text" value={productType} onChange={(e) => setProductType(e.target.value)} required className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50" />
+    <textarea value={productType} onChange={(e) => setProductType(e.target.value)} required placeholder="e.g., Pasta Pouches, Penne & Fusilli" className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50 p-2 resize-y" rows={2} />
   </div>
 
   <div>
     <label className="block text-sm font-medium">Background/Environment:</label>
-    <input type="text" value={backgroundStyle} onChange={(e) => setBackgroundStyle(e.target.value)} required className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50" />
+    <textarea value={backgroundStyle} onChange={(e) => setBackgroundStyle(e.target.value)} required placeholder="e.g., Blurred supermarket aisle with Pakistani culutural visuals, alongside Pakistani products showing up on the shelves." className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50 p-2 resize-y" rows={2} />
   </div>
 
   <div>
     <label className="block text-sm font-medium">Slogan Text:</label>
-    <input type="text" value={slogan} onChange={(e) => setSlogan(e.target.value)} required className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50" />
+    <textarea value={slogan} onChange={(e) => setSlogan(e.target.value)} required placeholder="e.g., Make Meals Complete" className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50 p-2 resize-y" rows={2} />
   </div>
 
   <div>
@@ -89,7 +89,7 @@ const GuidedForm: React.FC = () => {
 
   <div>
     <label className="block text-sm font-medium">Detailed description:</label>
-    <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={4} className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50" />
+    <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={4} placeholder="e.g., A 4 ft × 4 ft kiosk with Fusilli and Penne pouches with a woman and man usher standing side by side to the kiosk without any overlap. The ushers should have a distinct Pakistani ethnicity and should be wearing western employee clothes." className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm focus:ring focus:ring-opacity-50 p-2" />
   </div>
 </div>
 

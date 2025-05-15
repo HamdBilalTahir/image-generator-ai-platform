@@ -17,7 +17,7 @@ export default function Home() {
     <div
       className={`${geistSans.className} ${geistMono.className} flex flex-col items-center justify-center min-h-screen p-8 pb-20 gap-8 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
     >
-      <h1 className="text-2xl font-bold mb-4">Generate Your Image</h1>
+      <h1 className="text-2xl font-bold mb-4">Generate Your Brand Copy Image</h1>
       <GuidedForm />
     </div>
   );
