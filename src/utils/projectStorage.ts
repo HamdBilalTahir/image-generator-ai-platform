@@ -1,11 +1,11 @@
-import { Project } from "@/types/project";
+import { Project } from '@/types/project';
 
 export const saveProjects = (projects: Project[]) => {
-  localStorage.setItem("projects", JSON.stringify(projects));
+  localStorage.setItem('projects', JSON.stringify(projects));
 };
 
 export const loadProjects = (): Project[] => {
-  const data = localStorage.getItem("projects");
+  const data = localStorage.getItem('projects');
   return data ? JSON.parse(data) : [];
 };
 
