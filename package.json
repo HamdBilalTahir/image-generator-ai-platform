@@ -9,15 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "form-data": "^4.0.2",
     "formidable": "^3.5.4",
     "next": "15.3.2",
     "openai": "^4.98.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-spinners": "^0.17.0",
-    "tailwind": "^4.0.0",
-    "undici": "^7.9.0"
+    "tailwind": "^4.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
