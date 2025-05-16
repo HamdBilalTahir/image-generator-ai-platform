@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const assemblePrompt = (formData: Record<string, any>): string => {
   return `
     Generate a photorealistic marketing image with:

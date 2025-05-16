@@ -39,6 +39,21 @@ const ImageEditor: React.FC<ImageEditorProps> = ({ image, onEdit }) => {
       >
         Edit Image
       </button>
+      <button
+        onClick={() => {
+          if (image) {
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            link.download = 'edited-image.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        }}
+        className="mt-4 py-2 px-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md shadow-sm"
+      >
+        Download Image
+      </button>
     </div>
   );
 };
